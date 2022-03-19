@@ -48,10 +48,11 @@ public class ZomatoView {
 				zc.editProfileController();
 				break;
 				
-			default:
-
+			default: 
 				System.out.println("wrong choice");
 			}
+			System.out.println();
+			System.out.println();
 			System.out.println("do you want to continue y/n");
 			s=sc.next();
 		}

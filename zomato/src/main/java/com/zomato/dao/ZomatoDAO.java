@@ -16,7 +16,7 @@ public class ZomatoDAO implements ZomatoDAOInterface {
 		try
 		{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:9521:XE","system","database");
+			Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","system","database");
 			PreparedStatement ps=con.prepareStatement("insert into ZomatoUser values(?,?,?,?)");
 			ps.setString(1,zu.getName());
 			ps.setString(2,zu.getPassword());
@@ -163,7 +163,7 @@ public class ZomatoDAO implements ZomatoDAOInterface {
 
 	
 	public int editProfileDAO(ZomatoUser zu, ZomatoUser zu1) 
-	{
+           	{
 		int i=0;
 		try
 		{
@@ -175,7 +175,7 @@ public class ZomatoDAO implements ZomatoDAOInterface {
 			ps.setString(3,zu1.getEmail());
 			ps.setString(4,zu1.getAddress());
 			
-			ps.setString(5, zu.getEmail());
+			ps.setString(5,zu.getEmail());
 			i=ps.executeUpdate();
 			    
 		}

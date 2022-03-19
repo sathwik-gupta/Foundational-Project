@@ -90,14 +90,15 @@ public class ZomatoController implements ZomatoControllerInterface
 		ArrayList<ZomatoUser> ll=zs.viewAllProfileService();
 		
 		System.out.println(ll.size()+ "  record found in database");
-		for(ZomatoUser r:ll) {
+		for(ZomatoUser r:ll) 
+		{
 			System.out.println("************************");
 			System.out.println("Name is "+r.getName());
 			System.out.println("Password is "+r.getPassword());
 			System.out.println("Email is "+r.getEmail());
 			System.out.println("Address is "+r.getAddress());
 		
-	}
+  }
 	}
 
 	public void searchProfileController()
