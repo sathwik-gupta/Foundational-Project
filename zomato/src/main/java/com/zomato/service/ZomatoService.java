@@ -8,14 +8,14 @@ import com.zomato.utility.FactoryDAO;
 
 public class ZomatoService implements ZomatoServiceInterface {
 
-	public int CreateProfileService(ZomatoUser zu) 
+	/*public int CreateProfileService(ZomatoUser zu) 
 	{
 		int i=0;
 		ZomatoDAOInterface zd=FactoryDAO.createObject();
 		i=zd.CreateProfileDAO(zu);
 		return i;
-	}
-
+	}*/
+	
 	public ZomatoUser viewProfileService(ZomatoUser zu) 
 	{
 		ZomatoDAOInterface zd=FactoryDAO.createObject();
@@ -50,6 +50,21 @@ public class ZomatoService implements ZomatoServiceInterface {
 		ZomatoDAOInterface zd=FactoryDAO.createObject();
 		int z1=zd.editProfileDAO(zu,zu1);
 		return z1;
+	}
+
+	public int signUp(ZomatoUser zu) 
+	{
+		int i=0;
+		ZomatoDAOInterface zd = FactoryDAO.createObject();
+		i= zd.signUp(zu);
+		return i;
+	}
+
+	public ZomatoUser validation(ZomatoUser zu)
+	{
+		ZomatoDAOInterface zd = FactoryDAO.createObject();
+		ZomatoUser s=zd.validation(zu);
+		return s;
 	}
 
 }

@@ -6,7 +6,7 @@ import com.zomato.entity.ZomatoUser;
 
 public interface ZomatoDAOInterface {
 
-	int CreateProfileDAO(ZomatoUser zu);
+	//int CreateProfileDAO(ZomatoUser zu);
 
 	ZomatoUser viewProfileDao(ZomatoUser zu);
 
@@ -17,5 +17,9 @@ public interface ZomatoDAOInterface {
 	ArrayList<ZomatoUser> searchProfileDao(ZomatoUser zu);
 
 	int editProfileDAO(ZomatoUser zu, ZomatoUser zu1);
+
+	ZomatoUser validation(ZomatoUser zu);
+
+	int signUp(ZomatoUser zu);
 
 }

@@ -3,7 +3,7 @@ package com.zomato.controller;
 public interface ZomatoControllerInterface 
 {
 
-	void createProfileController();
+	//void createProfileController();
 
 	void viewProfileController();
 
@@ -14,5 +14,9 @@ public interface ZomatoControllerInterface
 	void searchProfileController();
 
 	void editProfileController();
+
+	int signUp();
+
+	int signIn();
 
 }

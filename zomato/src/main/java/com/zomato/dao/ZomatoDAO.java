@@ -4,13 +4,14 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.zomato.entity.ZomatoUser;
 
 public class ZomatoDAO implements ZomatoDAOInterface {
 
-	public int CreateProfileDAO(ZomatoUser zu)
+	/*public int CreateProfileDAO(ZomatoUser zu)
 	{
 		int i=0;
 		try
@@ -30,7 +31,7 @@ public class ZomatoDAO implements ZomatoDAOInterface {
 			e.printStackTrace();
 		}
 		return i;
-	}
+	}*/
 
 	public ZomatoUser viewProfileDao(ZomatoUser zu)
 	{
@@ -86,7 +87,6 @@ public class ZomatoDAO implements ZomatoDAOInterface {
 		}
 		return i;
 	}
-
 
 	public ArrayList<ZomatoUser> viewAllProfileDAO() 
 	{
@@ -161,7 +161,6 @@ public class ZomatoDAO implements ZomatoDAOInterface {
 		return ll;
 	}
 
-	
 	public int editProfileDAO(ZomatoUser zu, ZomatoUser zu1) 
            	{
 		int i=0;
@@ -185,6 +184,81 @@ public class ZomatoDAO implements ZomatoDAOInterface {
 		}
 		return i;
 	}
-	
 
+	public ZomatoUser validation(ZomatoUser zu)
+	{
+		ZomatoUser data = null;
+		try 
+		{
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","system","database");
+			PreparedStatement ps = con.prepareStatement("select * from ZomatoUser where email=?");
+			
+			ps.setString(1, zu.getEmail1());
+			
+			ResultSet s1 =ps.executeQuery();
+			if(s1.next())
+			{
+				
+				String e=s1.getString(3);
+				String p=s1.getString(2);
+				
+				data=new ZomatoUser();
+				
+				data.setPassword(p);
+				data.setEmail(e);
+				
+			}
+		}
+		catch(Exception e) 
+		{
+			e.printStackTrace();
+		}
+		return data;
+	}
+
+	public int signUp(ZomatoUser zu)
+	{
+		int i=0;
+		PreparedStatement ps = null;
+		try 
+		{
+			try 
+			{
+				Class.forName("oracle.jdbc.driver.OracleDriver");
+			} 
+			catch (ClassNotFoundException e) 
+			{
+				e.printStackTrace();
+			}
+			Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","system","database");
+			ps = con.prepareStatement("insert into ZomatoUser values(?,?,?,?)");
+			
+			ps.setString(1, zu.getName());
+			ps.setString(2, zu.getPassword());
+			ps.setString(3, zu.getEmail());
+			ps.setString(4, zu.getAddress());			
+			
+			i=ps.executeUpdate();
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		finally 
+		{
+			if(ps!=null) 
+			{
+					try 
+					{
+						ps.close();
+					}
+				catch (SQLException e) 
+					{
+					e.printStackTrace();
+					}
+			}
+		}
+		return i;
+		
+	}
 }

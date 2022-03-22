@@ -7,7 +7,7 @@ import com.zomato.entity.ZomatoUser;
 public interface ZomatoServiceInterface
 {
 
-	int CreateProfileService(ZomatoUser zu);
+	//int CreateProfileService(ZomatoUser zu);
 
 	ZomatoUser viewProfileService(ZomatoUser zu);
 
@@ -18,5 +18,9 @@ public interface ZomatoServiceInterface
 	ArrayList<ZomatoUser> searchProfileService(ZomatoUser zu);
 
 	int editProfileService(ZomatoUser zu, ZomatoUser zu1);
+
+	int signUp(ZomatoUser zu);
+
+	ZomatoUser validation(ZomatoUser zu);
 
 }

@@ -10,7 +10,7 @@ import com.zomato.utility.FactoryService;
 public class ZomatoController implements ZomatoControllerInterface 
 {
 
-	public void createProfileController()
+	/*public void createProfileController()
 	{
 		Scanner sc=new Scanner(System.in);
 
@@ -41,7 +41,7 @@ public class ZomatoController implements ZomatoControllerInterface
 		else
 			System.out.println("unable to create profile");
 			
-	}
+	}*/
 
 	public void viewProfileController() 
 	{
@@ -123,7 +123,6 @@ public class ZomatoController implements ZomatoControllerInterface
 		
 	}
 
-
 	public void editProfileController() 
 	{
 		Scanner sc=new Scanner(System.in);
@@ -156,6 +155,75 @@ public class ZomatoController implements ZomatoControllerInterface
 		}
 		else
 			System.out.println("can't be changed");
+	}
+
+	public int signUp() 
+	{
+		ZomatoServiceInterface zs=FactoryService.createObject();
+		int i=0;
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter name");
+		String name = sc.next();
+		
+		System.out.println("Enter password");
+		String password= sc.next();
+		
+		System.out.println("Enter email");
+		String email = sc.next();
+		
+		System.out.println("Enter address");
+		String address = sc.next();
+		
+		ZomatoUser zu=new ZomatoUser();
+		
+		zu.setName(name);
+		zu.setPassword(password);
+		zu.setEmail(email);
+		zu.setAddress(address);
+		
+		i = zs.signUp(zu);
+		
+		if(i>0) {
+			System.out.println("Profile Created");
+		}
+		else {
+			System.out.println("oops! something went wrong");
+		}
+		return i;
+		
+		
+	}
+
+	public int signIn() 
+	{
+		int i=0;
+		ZomatoServiceInterface zs=FactoryService.createObject();
+		Scanner sc=new Scanner(System.in);
+		
+		System.out.println("Enter email");
+		String email1 = sc.next();
+		
+		System.out.println("Enter password");
+		String password1= sc.next();
+		
+		ZomatoUser zu = new ZomatoUser();
+		
+		zu.setEmail1(email1);
+		zu.setPassword1(password1);
+		
+		ZomatoUser s1=zs.validation(zu);
+		if(s1!=null) 
+		{
+		if((s1.getPassword().equals(zu.getPassword1())) && (s1.getEmail().equals(zu.getEmail1()))) 
+		{
+			i=1; 
+		
+		}
+		}
+		else {
+			System.out.println("record not found for email "+email1);
+		}
+		return i;
 	}
 
 }
