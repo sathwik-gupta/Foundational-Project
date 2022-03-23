@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.zomato.entity.ZomatoUser;
+import com.zomato.entity.sendMessageDetails;
 
 public class ZomatoDAO implements ZomatoDAOInterface {
 
@@ -260,5 +261,28 @@ public class ZomatoDAO implements ZomatoDAOInterface {
 		}
 		return i;
 		
+	}
+
+	public int sendMessageDAO(sendMessageDetails smd)
+	{
+		int i=0;
+		try
+		{
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","system","database");
+		PreparedStatement ps=con.prepareStatement("insert into timelinedetails values(?,?,?,?,?)");
+		ps.setString(1, smd.getMessageid());
+		ps.setString(2, smd.getSender());
+		ps.setString(3, smd.getMessage());
+		ps.setString(4, smd.getDate1());
+		ps.setString(5, smd.getReceiver());
+		
+		i=ps.executeUpdate();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return i;
 	}
 }

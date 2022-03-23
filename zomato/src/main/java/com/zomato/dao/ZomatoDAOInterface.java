@@ -3,6 +3,7 @@ package com.zomato.dao;
 import java.util.ArrayList;
 
 import com.zomato.entity.ZomatoUser;
+import com.zomato.entity.sendMessageDetails;
 
 public interface ZomatoDAOInterface {
 
@@ -21,5 +22,7 @@ public interface ZomatoDAOInterface {
 	ZomatoUser validation(ZomatoUser zu);
 
 	int signUp(ZomatoUser zu);
+
+	int sendMessageDAO(sendMessageDetails smd);
 
 }

@@ -1,9 +1,11 @@
 package com.zomato.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import com.zomato.entity.ZomatoUser;
+import com.zomato.entity.sendMessageDetails;
 import com.zomato.service.ZomatoServiceInterface;
 import com.zomato.utility.FactoryService;
 
@@ -43,7 +45,7 @@ public class ZomatoController implements ZomatoControllerInterface
 			
 	}*/
 
-	public void viewProfileController() 
+	public ZomatoUser viewProfileController() 
 	{
 		Scanner sc=new Scanner(System.in);
 		System.out.println("enter email");
@@ -64,9 +66,11 @@ public class ZomatoController implements ZomatoControllerInterface
 		else
 			System.out.println("no profile found");
 		
+		return z1;
+		
 	}
 
-	public void deleteProfileController() 
+	public int deleteProfileController() 
 	{
 		Scanner sc=new Scanner(System.in);
 		System.out.println("enter email");
@@ -82,9 +86,11 @@ public class ZomatoController implements ZomatoControllerInterface
 		else
 			System.out.println("profile doesn't exist");
 		
+		return i;
+		
 	}
 
-	public void viewAllProfileController() 
+	public ArrayList<ZomatoUser> viewAllProfileController() 
 	{
 		ZomatoServiceInterface zs=FactoryService.createObject();
 		ArrayList<ZomatoUser> ll=zs.viewAllProfileService();
@@ -97,11 +103,11 @@ public class ZomatoController implements ZomatoControllerInterface
 			System.out.println("Password is "+r.getPassword());
 			System.out.println("Email is "+r.getEmail());
 			System.out.println("Address is "+r.getAddress());
-		
-  }
+		}
+		return ll;
 	}
 
-	public void searchProfileController()
+	public List<ZomatoUser> searchProfileController()
 	{
 		Scanner sc=new Scanner(System.in);
 		System.out.println("enter name");
@@ -120,10 +126,11 @@ public class ZomatoController implements ZomatoControllerInterface
 			System.out.println("Email is "+r.getEmail());
 			System.out.println("Address is "+r.getAddress());
 		}
+		return ll;
 		
 	}
 
-	public void editProfileController() 
+	public ZomatoUser editProfileController() 
 	{
 		Scanner sc=new Scanner(System.in);
 		System.out.println("enter the email to edit");
@@ -155,6 +162,8 @@ public class ZomatoController implements ZomatoControllerInterface
 		}
 		else
 			System.out.println("can't be changed");
+		
+		return zu1;
 	}
 
 	public int signUp() 
@@ -224,6 +233,48 @@ public class ZomatoController implements ZomatoControllerInterface
 			System.out.println("record not found for email "+email1);
 		}
 		return i;
+	}
+
+	public int sendMessageController() 
+	{
+		ZomatoServiceInterface zs=FactoryService.createObject();
+		Scanner sc=new Scanner(System.in);
+		System.out.println("enter message id");
+		String messageid = sc.next();
+		
+		System.out.println("enter sender emailid");
+		String sender = sc.next();
+		
+		//receiver id should be in userdetails table
+		System.out.println("enter reciver id");
+		String receiver = sc.next();
+		
+		System.out.println("enter message");
+		String message = sc.next();
+		
+		System.out.println("enter date");
+		String date = sc.next();
+		
+		sendMessageDetails smd = new sendMessageDetails();
+		smd.setMessageid(messageid);
+		smd.setSender(sender);
+		smd.setMessage(message);
+		smd.setDate1(date);
+		smd.setReceiver(receiver);
+	
+		int i= zs.sendMessageService(smd);
+		
+		if(i>0)
+		{
+			System.out.println("message sent");
+		}
+		else 
+		{
+			System.out.println("oops! something went wrong");
+		}
+		return i;
+		
+		
 	}
 
 }

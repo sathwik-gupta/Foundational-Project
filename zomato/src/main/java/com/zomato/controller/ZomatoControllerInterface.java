@@ -1,22 +1,29 @@
 package com.zomato.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.zomato.entity.ZomatoUser;
+
 public interface ZomatoControllerInterface 
 {
 
 	//void createProfileController();
 
-	void viewProfileController();
+	ZomatoUser viewProfileController();
 
-	void deleteProfileController();
+	int deleteProfileController();
 
-	void viewAllProfileController();
+	ArrayList<ZomatoUser> viewAllProfileController();
 
-	void searchProfileController();
+	List<ZomatoUser> searchProfileController();
 
-	void editProfileController();
+	ZomatoUser editProfileController();
 
 	int signUp();
 
 	int signIn();
+
+	int sendMessageController();
 
 }

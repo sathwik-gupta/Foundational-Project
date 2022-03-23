@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.zomato.dao.ZomatoDAOInterface;
 import com.zomato.entity.ZomatoUser;
+import com.zomato.entity.sendMessageDetails;
 import com.zomato.utility.FactoryDAO;
 
 public class ZomatoService implements ZomatoServiceInterface {
@@ -65,6 +66,13 @@ public class ZomatoService implements ZomatoServiceInterface {
 		ZomatoDAOInterface zd = FactoryDAO.createObject();
 		ZomatoUser s=zd.validation(zu);
 		return s;
+	}
+
+	public int sendMessageService(sendMessageDetails smd) 
+	{
+		ZomatoDAOInterface zd=FactoryDAO.createObject();
+		int i=zd.sendMessageDAO(smd);
+		return i;
 	}
 
 }

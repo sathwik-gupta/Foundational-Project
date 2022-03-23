@@ -38,33 +38,36 @@ public class ZomatoView {
 			
 						System.out.println("*****MAIN MENU*****");
 						
-						System.out.println("press 2 to view profile");
-						System.out.println("press 3 to delete profile");
-						System.out.println("press 4 to viewAll profile");
-						System.out.println("press 5 to search profile");
-						System.out.println("press 6 to edit profile");
+						System.out.println("press 1 to view profile");
+						System.out.println("press 2 to delete profile");
+						System.out.println("press 3 to viewAll profile");
+						System.out.println("press 4 to search profile");
+						System.out.println("press 5 to edit profile");
+						System.out.println("press 6 to send message");
 
 						System.out.println("enter choice");
 						ch=sc.nextInt();
 			
 						switch(ch)
 						{
-						case 2:
+						case 1:
 							zc.viewProfileController();
 							break;
-						case 3:
+						case 2:
 							zc.deleteProfileController();
 							break;
-						case 4:
+						case 3:
 							zc.viewAllProfileController();
 							break;
-						case 5:
+						case 4:
 							zc.searchProfileController();
 							break;
-						case 6:
+						case 5:
 							zc.editProfileController();
 							break;
-				
+						case 6:
+							zc.sendMessageController();
+							break;
 						default: 
 							System.out.println("wrong choice");
 						}

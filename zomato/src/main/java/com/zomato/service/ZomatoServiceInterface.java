@@ -3,6 +3,7 @@ package com.zomato.service;
 import java.util.ArrayList;
 
 import com.zomato.entity.ZomatoUser;
+import com.zomato.entity.sendMessageDetails;
 
 public interface ZomatoServiceInterface
 {
@@ -22,5 +23,7 @@ public interface ZomatoServiceInterface
 	int signUp(ZomatoUser zu);
 
 	ZomatoUser validation(ZomatoUser zu);
+
+	int sendMessageService(sendMessageDetails smd);
 
 }
