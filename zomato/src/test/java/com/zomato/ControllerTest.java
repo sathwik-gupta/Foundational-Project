@@ -62,10 +62,6 @@ public class ControllerTest
 		assert i!=null:"test edit profile is failed";
 	}
 
-	
-
-	
-
 	@Test
 	public void testTimeline() {
 		int i = zc.sendMessageController();

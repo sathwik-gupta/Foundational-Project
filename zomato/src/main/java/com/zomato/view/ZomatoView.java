@@ -1,6 +1,7 @@
 package com.zomato.view;
 
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 import com.zomato.controller.ZomatoControllerInterface;
 import com.zomato.utility.ControllerFactory;
@@ -9,18 +10,19 @@ public class ZomatoView {
 
 	public static void main(String[] args) 
 	{
+		Logger log=Logger.getLogger("ZomatoController");
 		ZomatoControllerInterface zc=ControllerFactory.createObject();
 		int s1;
 		
 		String s="y";
 		while(s.equals("y"))
 		{
-			System.out.println("*************");
-			System.out.println("Welcome to Zomato");
-			System.out.println("Sign-up/Sign-in To Order");
-			System.out.println("*************");
-			System.out.println("Press 1 to Sign-up");
-			System.out.println("Press 2 to Sign-in");
+			log.info("*************");
+			log.info("Welcome to Zomato");
+			log.info("Sign-up/Sign-in To Order");
+			log.info("*************");
+			log.info("Press 1 to Sign-up");
+			log.info("Press 2 to Sign-in");
 			
 			Scanner sc=new Scanner(System.in);
 			int ch=sc.nextInt();
@@ -84,7 +86,7 @@ public class ZomatoView {
 
 			System.out.println();
 			System.out.println();
-			System.out.println("do you want to continue y/n");
+			log.info("do you want to continue y/n");
 			s=sc.next();
 		}
 	}

@@ -35,22 +35,22 @@ public class ServiceTest {
 
 	@Test
 	public void testViewProfile() {
-		zu.setEmail("ranganath@gmail.com");
+		zu.setEmail("sat@gmail.com");
 		ZomatoUser view = wsi.viewProfileService(zu);
 		assert view!=null:"profile doesnot exist";
 	}
 
 	@Test
 	public void testDeleteProfile() {
-		zu.setEmail("sai@gmail.com");
+		zu.setEmail("sat@gmail.com");
 		int i = wsi.deleteProfileServie(zu);
 		assert i>0:"profile not deleted";
 	}
 
 	@Test
 	public void testEditProfile() {
-		zu.setEmail("rangath@gmail.com");
-		zu.setName("jasmine");
+		zu.setEmail("sat@gmail.com");
+		zu.setName("Sath");
 		int i = wsi.editProfileService(zu,zu1);
 		assert i>0:"first name not editted";
 	}

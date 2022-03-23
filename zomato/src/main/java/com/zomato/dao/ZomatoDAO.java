@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import com.zomato.entity.ZomatoUser;
 import com.zomato.entity.sendMessageDetails;
+import com.zomato.exception.ExternalException;
 
 public class ZomatoDAO implements ZomatoDAOInterface {
 
@@ -193,6 +194,9 @@ public class ZomatoDAO implements ZomatoDAOInterface {
 		{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","system","database");
+			
+			if(zu.getEmail1().equals("zom@gmail.com"))
+				throw new ExternalException();
 			PreparedStatement ps = con.prepareStatement("select * from ZomatoUser where email=?");
 			
 			ps.setString(1, zu.getEmail1());
