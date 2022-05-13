@@ -83,17 +83,17 @@ public class ServiceTest {
 	@Test
 	public void testSendMessage() {
 		tld.setMessageid("1");
-		tld.setSender("sai@gmail.com");
+		tld.setSender("sat@gmail.com");
 		tld.setMessage("hello");
 		tld.setDate1("12-08-2022");
-		tld.setReceiver("ranga123");
+		tld.setReceiver("kish@gmail.com");
 		int i = wsi.sendMessageService(tld);
 		assert i>0:"timeline failed";
 	}
 
 	@Test
 	public void testSearchProfile() {
-		zu.setName("parkan");
+		zu.setName("Sath");
 		List<ZomatoUser> search = wsi.searchProfileService(zu);
 		assert search!=null:"search not found";
 	}

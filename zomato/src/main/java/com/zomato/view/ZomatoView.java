@@ -1,5 +1,4 @@
 package com.zomato.view;
-
 import java.util.Scanner;
 import java.util.logging.Logger;
 
@@ -37,7 +36,6 @@ public class ZomatoView {
 				{
 					while(s.equals("y"))
 					{
-			
 						System.out.println("*****MAIN MENU*****");
 						
 						System.out.println("press 1 to view profile");

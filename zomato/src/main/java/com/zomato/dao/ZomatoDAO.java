@@ -237,8 +237,8 @@ public class ZomatoDAO implements ZomatoDAOInterface {
 				e.printStackTrace();
 			}
 			Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","system","database");
-			if(zu.getEmail1().equals("zom@gmail.com"))
-				throw new ExternalException();
+			/*if(zu.getEmail1().equals("zom@gmail.com"))
+				throw new ExternalException();*/
 			ps = con.prepareStatement("insert into ZomatoUser values(?,?,?,?)");
 			
 			ps.setString(1, zu.getName());
